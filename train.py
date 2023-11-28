@@ -39,18 +39,18 @@ def train_one_epoch(loader, model, optimizer, loss_fn, scaler, device):
 
 def main():
     train_ds = FacialKeypointDataset(
-        csv_file="./work/training.csv",
+        csv_file="face_detection/work/training.csv",
         transform=config.train_transforms,
     )
     train_loader = DataLoader(
         train_ds,
         batch_size=config.BATCH_SIZE,
-        num_workers=config.NUM_WORKERS,
+        num_workers=0,
         pin_memory=config.PIN_MEMORY,
         shuffle=True,
     )
     test_ds = FacialKeypointDataset(
-        csv_file="./work/test.csv",
+        csv_file="face_detection/work/test.csv",
         transform=config.val_transforms,
         train=False,
     )
@@ -58,7 +58,7 @@ def main():
     test_loader = DataLoader(
         test_ds,
         batch_size=1,
-        num_workers=config.NUM_WORKERS,
+        num_workers=0,
         pin_memory=config.PIN_MEMORY,
         shuffle=False,
     )
