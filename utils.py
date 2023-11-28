@@ -12,7 +12,7 @@ def get_submission(loader, dataset, model_15, model_4):
     """
     model_15.eval()
     model_4.eval()
-    id_lookup = pd.read_csv("face_detection/work/IdLookupTable.csv")
+    id_lookup = pd.read_csv("./work/IdLookupTable.csv")
     predictions = []
     image_id = 1
 
@@ -32,7 +32,7 @@ def get_submission(loader, dataset, model_15, model_4):
         image_id += 1
 
     df = pd.DataFrame({"RowId": np.arange(1, len(predictions)+1), "Location": predictions})
-    df.to_csv("face_detection/work/submission.csv", index=False)
+    df.to_csv("./work/submission.csv", index=False)
     model_15.train()
     model_4.train()
 

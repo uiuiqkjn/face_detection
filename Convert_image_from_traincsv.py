@@ -3,8 +3,8 @@ import pandas as pd
 import os
 from PIL import Image
 
-read_folder = 'face_detection/work/training.csv'
-save_folder = 'face_detection/work/data/train/'
+read_folder = './work/training.csv'
+save_folder = './work/data/train/'
 def Convert_image_from_csv(csv, column, save_folder, resize=(96, 96)):  
     if not os.path.exists(save_folder):
         os.makedirs(save_folder)

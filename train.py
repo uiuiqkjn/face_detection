@@ -39,7 +39,7 @@ def train_one_epoch(loader, model, optimizer, loss_fn, scaler, device):
 
 def main():
     train_ds = FacialKeypointDataset(
-        csv_file="face_detection/work/training.csv",
+        csv_file="./work/training.csv",
         transform=config.train_transforms,
     )
     train_loader = DataLoader(
@@ -50,7 +50,7 @@ def main():
         shuffle=True,
     )
     test_ds = FacialKeypointDataset(
-        csv_file="face_detection/work/test.csv",
+        csv_file="./work/test.csv",
         transform=config.val_transforms,
         train=False,
     )
@@ -61,7 +61,7 @@ def main():
         num_workers=0,
         pin_memory=config.PIN_MEMORY,
         shuffle=False,
-    )
+    )   
     loss_fn = nn.MSELoss(reduction="sum")
     model = EfficientNet.from_pretrained("efficientnet-b0")
     model._fc = nn.Linear(1280, 30)
