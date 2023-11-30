@@ -41,7 +41,7 @@ class FacialKeypointDataset(Dataset):
 
 
 if __name__ == "__main__":
-    ds = FacialKeypointDataset(csv_file="face_detection/work/training.csv", train=True, transform=config.train_transforms)
+    ds = FacialKeypointDataset(csv_file="./work/training.csv", train=True, transform=config.train_transforms)
     loader = DataLoader(ds, batch_size=1, shuffle=True, num_workers=0)
 
     for idx, (x, y) in enumerate(loader):
